@@ -355,6 +355,20 @@ export const PROFILE_DATA: ProfileData = {
         'Patrones de Diseño',
       ],
     },
+    {
+      id: 'semillero-goslint',
+      role: 'Integrante del Semillero de Programación Competitiva Goslint',
+      organization: 'Unidad Central del Valle del Cauca (UCEVA)',
+      period: '2023 - Actualidad',
+      summary:
+        'Entrenamiento en algoritmia avanzada, estructuras de datos y divulgación académica en ciencias de la computación.',
+      achievements: [
+        'Participación en programación competitiva (ICPC), aplicando teoría de grafos y programación dinámica en C, C++ y Java.',
+        'Autor de un artículo de divulgación científica sobre el juez virtual.',
+        'Moderador de un bloque del podcast de Pensamiento Computacional.',
+      ],
+      technologies: ['C', 'C++', 'Java', 'Algoritmia ICPC', 'Grafos', 'Programación Dinámica'],
+    },
   ],
   contacto: {
     githubUsername: 'Sebasmf5',

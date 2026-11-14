@@ -1,0 +1,75 @@
+<section id="experiencia" class="experience-chapter" aria-labelledby="experience-heading">
+  <div class="portfolio-container">
+    <header class="experience-chapter__header">
+      <p class="section-eyebrow">Trayectoria aplicada e investigación</p>
+      <h2 id="experience-heading" class="section-title text-luminous">Experiencia y logros</h2>
+      <p class="section-subtitle">
+        Automatización de procesos institucionales reales en la UCEVA, desarrollo con arquitectura
+        limpia y participación activa en programación competitiva.
+      </p>
+    </header>
+
+    <div class="experience-timeline" role="list">
+      @for (item of experienceItems(); track item.id) {
+        <article class="experience-card glass-tile" role="listitem" tabindex="0">
+          <div class="experience-card__top">
+            <div class="experience-card__title-group">
+              <span class="experience-card__icon-wrap" aria-hidden="true">
+                <lucide-icon
+                  [img]="item.id === 'monitor-bienestar' ? icons.briefcase : icons.award"
+                  [size]="18"
+                  [strokeWidth]="1.75"
+                ></lucide-icon>
+              </span>
+              <div>
+                <h3 class="experience-card__role">{{ item.role }}</h3>
+                <p class="experience-card__organization">
+                  <lucide-icon
+                    [img]="icons.building"
+                    [size]="14"
+                    [strokeWidth]="1.75"
+                    aria-hidden="true"
+                  ></lucide-icon>
+                  <span>{{ item.organization }}</span>
+                </p>
+              </div>
+            </div>
+
+            <span class="experience-card__period">
+              <lucide-icon
+                [img]="icons.calendar"
+                [size]="13"
+                [strokeWidth]="1.75"
+                aria-hidden="true"
+              ></lucide-icon>
+              <span>{{ item.period }}</span>
+            </span>
+          </div>
+
+          <p class="experience-card__summary">{{ item.summary }}</p>
+
+          <ul class="experience-card__achievements" aria-label="Logros en {{ item.role }}">
+            @for (achievement of item.achievements; track achievement) {
+              <li class="experience-card__achievement-item">
+                <lucide-icon
+                  class="experience-card__check"
+                  [img]="icons.check"
+                  [size]="16"
+                  [strokeWidth]="1.75"
+                  aria-hidden="true"
+                ></lucide-icon>
+                <span>{{ achievement }}</span>
+              </li>
+            }
+          </ul>
+
+          <footer class="experience-card__footer" aria-label="Tecnologías aplicadas">
+            @for (tech of item.technologies; track tech) {
+              <span class="experience-card__tech-tag">{{ tech }}</span>
+            }
+          </footer>
+        </article>
+      }
+    </div>
+  </div>
+</section>

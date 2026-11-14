@@ -7,6 +7,7 @@ import { ProfileData } from './interface/profile.interface';
 import { PROFILE_DATA } from './mock/profile.data';
 import { ProfileSectionComponent } from './pages/profile-section/profile-section';
 import { SkillsSectionComponent } from './pages/skills-section/skills-section';
+import { ExperienceSectionComponent } from './pages/experience-section/experience-section';
 import { PortfolioService } from './services/portfolio.service';
 
 /**
@@ -16,7 +17,13 @@ import { PortfolioService } from './services/portfolio.service';
  */
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, ProfileSectionComponent, SkillsSectionComponent, FooterComponent],
+  imports: [
+    NavbarComponent,
+    ProfileSectionComponent,
+    SkillsSectionComponent,
+    ExperienceSectionComponent,
+    FooterComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
