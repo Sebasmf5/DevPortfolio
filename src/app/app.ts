@@ -8,6 +8,7 @@ import { PROFILE_DATA } from './mock/profile.data';
 import { ProfileSectionComponent } from './pages/profile-section/profile-section';
 import { SkillsSectionComponent } from './pages/skills-section/skills-section';
 import { ExperienceSectionComponent } from './pages/experience-section/experience-section';
+import { ProjectsSectionComponent } from './pages/projects-section/projects-section';
 import { PortfolioService } from './services/portfolio.service';
 
 /**
@@ -22,6 +23,7 @@ import { PortfolioService } from './services/portfolio.service';
     ProfileSectionComponent,
     SkillsSectionComponent,
     ExperienceSectionComponent,
+    ProjectsSectionComponent,
     FooterComponent,
   ],
   templateUrl: './app.html',
