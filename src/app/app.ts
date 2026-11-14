@@ -5,10 +5,11 @@ import { FooterComponent } from './components/footer/footer';
 import { NavbarComponent } from './components/navbar/navbar';
 import { ProfileData } from './interface/profile.interface';
 import { PROFILE_DATA } from './mock/profile.data';
-import { ProfileSectionComponent } from './pages/profile-section/profile-section';
-import { SkillsSectionComponent } from './pages/skills-section/skills-section';
+import { ContactSectionComponent } from './pages/contact-section/contact-section';
 import { ExperienceSectionComponent } from './pages/experience-section/experience-section';
+import { ProfileSectionComponent } from './pages/profile-section/profile-section';
 import { ProjectsSectionComponent } from './pages/projects-section/projects-section';
+import { SkillsSectionComponent } from './pages/skills-section/skills-section';
 import { PortfolioService } from './services/portfolio.service';
 
 /**
@@ -24,6 +25,7 @@ import { PortfolioService } from './services/portfolio.service';
     SkillsSectionComponent,
     ExperienceSectionComponent,
     ProjectsSectionComponent,
+    ContactSectionComponent,
     FooterComponent,
   ],
   templateUrl: './app.html',

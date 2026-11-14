@@ -1,0 +1,113 @@
+<section id="contacto" class="contact-chapter" aria-labelledby="contact-heading">
+  <div class="portfolio-container">
+    <header class="contact-chapter__header">
+      <p class="section-eyebrow">Conexión profesional y académica</p>
+      <h2 id="contact-heading" class="section-title text-luminous">Contacto y colaboración</h2>
+      <p class="contact-chapter__quote">
+        <lucide-icon
+          class="contact-chapter__quote-icon"
+          [img]="icons.sparkles"
+          [size]="16"
+          [strokeWidth]="1.75"
+          aria-hidden="true"
+        ></lucide-icon>
+        <span>{{ profile().mensajeCierre }}</span>
+      </p>
+    </header>
+
+    <div class="contact-choice-grid">
+      <!-- Panel de conversión 1: Código fuente y repositorios en GitHub -->
+      <article class="contact-panel glass-tile" tabindex="0">
+        <div class="contact-panel__top">
+          <span class="contact-panel__icon-wrap" aria-hidden="true">
+            <lucide-icon [img]="icons.code" [size]="20" [strokeWidth]="1.75"></lucide-icon>
+          </span>
+          <span class="contact-panel__badge">Open Source &amp; CI/CD</span>
+        </div>
+
+        <div class="contact-panel__body">
+          <h3 class="contact-panel__title">Explorar repositorios en GitHub</h3>
+          <p class="contact-panel__description">
+            Revisa el código fuente de este portafolio, los flujos automatizados de GitHub Actions,
+            proyectos con arquitectura limpia y soluciones de programación competitiva.
+          </p>
+        </div>
+
+        <footer class="contact-panel__actions">
+          <a
+            class="capsule-btn capsule-btn--primary contact-panel__cta"
+            [href]="profile().contacto.githubUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>GitHub &#64;{{ profile().contacto.githubUsername }}</span>
+            <lucide-icon
+              [img]="icons.arrowUpRight"
+              [size]="15"
+              [strokeWidth]="1.75"
+              aria-hidden="true"
+            ></lucide-icon>
+          </a>
+        </footer>
+      </article>
+
+      <!-- Panel de conversión 2: Contacto directo y redes profesionales -->
+      <article class="contact-panel glass-tile" tabindex="0">
+        <div class="contact-panel__top">
+          <span class="contact-panel__icon-wrap" aria-hidden="true">
+            <lucide-icon [img]="icons.mail" [size]="20" [strokeWidth]="1.75"></lucide-icon>
+          </span>
+          <span class="contact-panel__badge">Comunicación directa</span>
+        </div>
+
+        <div class="contact-panel__body">
+          <h3 class="contact-panel__title">Canales de contacto y ubicación</h3>
+          <p class="contact-panel__description">
+            Disponible para proyectos de desarrollo de software, automatización de procesos e
+            iniciativas académicas desde la {{ profile().institucion }}.
+          </p>
+
+          <p class="contact-panel__location">
+            <lucide-icon
+              [img]="icons.mapPin"
+              [size]="15"
+              [strokeWidth]="1.75"
+              aria-hidden="true"
+            ></lucide-icon>
+            <span>{{ profile().contacto.location }}</span>
+          </p>
+        </div>
+
+        <footer class="contact-panel__actions">
+          <a
+            class="capsule-btn capsule-btn--primary contact-panel__cta"
+            [href]="'mailto:' + profile().contacto.email"
+          >
+            <lucide-icon
+              [img]="icons.mail"
+              [size]="14"
+              [strokeWidth]="1.75"
+              aria-hidden="true"
+            ></lucide-icon>
+            <span>{{ profile().contacto.email }}</span>
+          </a>
+
+          <a
+            class="capsule-btn contact-panel__cta"
+            [href]="profile().contacto.linkedinUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <lucide-icon
+              [img]="icons.share"
+              [size]="14"
+              [strokeWidth]="1.75"
+              aria-hidden="true"
+            ></lucide-icon>
+            <span>LinkedIn</span>
+          </a>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
