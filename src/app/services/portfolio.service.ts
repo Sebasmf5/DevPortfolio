@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { BentoHighlight, ExperienceItem, ProfileData } from '../interface/profile.interface';
+import {
+  BentoHighlight,
+  ExperienceItem,
+  ProfileData,
+  SoftSkillItem,
+  TechnicalSkillItem,
+} from '../interface/profile.interface';
 import { Project } from '../interface/project.interface';
 import { PROFILE_DATA } from '../mock/profile.data';
 import { PROJECTS_DATA } from '../mock/projects.data';
@@ -26,6 +32,20 @@ export class PortfolioService {
    */
   getBentoHighlights(): Observable<BentoHighlight[]> {
     return of(PROFILE_DATA.bentoHighlights);
+  }
+
+  /**
+   * Obtiene el listado tipado de conocimientos técnicos y lenguajes como un `Observable`.
+   */
+  getTechnicalSkills(): Observable<TechnicalSkillItem[]> {
+    return of(PROFILE_DATA.habilidadesTecnicas);
+  }
+
+  /**
+   * Obtiene el listado tipado de habilidades blandas como un `Observable`.
+   */
+  getSoftSkills(): Observable<SoftSkillItem[]> {
+    return of(PROFILE_DATA.habilidadesBlandas);
   }
 
   /**
