@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="chapter-container footer__inner">
+    <div class="footer__circuit-rule" aria-hidden="true">
+      <span class="footer__node"></span>
+      <span class="footer__line"></span>
+      <span class="footer__node"></span>
+    </div>
+
+    <div class="footer__content">
+      <div class="footer__identity">
+        <p class="footer__name">{{ profile().nombre }}</p>
+        <p class="footer__meta">
+          {{ profile().institucion }} · Arquitectura de Software ({{ currentYear() }})
+        </p>
+      </div>
+
+      <nav class="footer__links" aria-label="Enlaces rápidos del pie de página">
+        <a routerLink="/perfil" class="footer__link">Perfil</a>
+        <a routerLink="/habilidades" class="footer__link">Habilidades</a>
+        <a routerLink="/experiencia" class="footer__link">Experiencia</a>
+        <a routerLink="/proyectos" class="footer__link">Proyectos</a>
+        <a routerLink="/contacto" class="footer__link">Contacto</a>
+      </nav>
+
+      <a
+        [href]="profile().contacto.githubUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="glowing-capsule footer__github"
+      >
+        <span>GitHub · {{ profile().contacto.githubUsername }}</span>
+      </a>
+    </div>
+  </div>
+</footer>

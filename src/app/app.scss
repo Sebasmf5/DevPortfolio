@@ -1,0 +1,14 @@
+.portfolio-layout {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-main {
+  flex: 1;
+}
+
+.layout-placeholder {
+  padding-block: var(--space-chapter);
+  text-align: center;
+}

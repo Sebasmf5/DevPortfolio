@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@use './styles/tokens';
+@use './styles/layout';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-canvas);
+  color: var(--color-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--color-canvas);
+  background-image: var(--spotlight-radial);
+  background-repeat: no-repeat;
+  color: var(--color-body);
+  transition:
+    background-color var(--transition-smooth),
+    color var(--transition-smooth);
+}
+
+a {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

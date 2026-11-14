@@ -1,0 +1,119 @@
+/**
+ * Sistema de Tokens de Diseño (Variables CSS)
+ * - Tema Oscuro (`[data-theme='dark']`): Inspirado en AuthKit (luminous circuit theater).
+ * - Tema Claro (`[data-theme='light']`): Superficies técnicas claras con contraste WCAG AA.
+ */
+
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Tipografía (DESIGN.md: aeonikPro -> Manrope, Untitled Sans -> Inter) */
+  --font-heading: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Fondos y Superficies (AuthKit Dark) */
+  --color-canvas: #05060f;
+  --color-canvas-elevated: #070811;
+  --color-tile: rgba(186, 214, 247, 0.02);
+  --color-tile-hover: rgba(186, 214, 247, 0.045);
+  --color-glass: rgba(186, 207, 247, 0.025);
+  --color-glass-hover: rgba(186, 207, 247, 0.05);
+  --color-wash: rgba(186, 214, 247, 0.06);
+  --color-wash-hover: rgba(186, 214, 247, 0.11);
+  --color-nav-backdrop: rgba(5, 6, 15, 0.82);
+
+  /* Bordes y Líneas de Circuito */
+  --color-edge: rgba(186, 207, 247, 0.12);
+  --color-edge-subtle: rgba(186, 214, 247, 0.07);
+  --color-edge-bright: rgba(216, 236, 248, 0.24);
+  --color-circuit-line: rgba(186, 207, 247, 0.08);
+  --color-circuit-dot: rgba(152, 192, 239, 0.45);
+
+  /* Texto y Gradientes Luminosos (Contraste AA verificado sobre #05060f) */
+  --color-heading-light: #d8ecf8;
+  --color-heading-blue: #98c0ef;
+  --color-heading-shadow: rgba(174, 207, 242, 0.24);
+  --color-action-ink: #d1e4fa;
+  --color-quote: #c7d3ea;
+  --color-body: #a8b3c7;
+  --color-muted: #8b95a9;
+
+  /* Acentos e Indicadores */
+  --color-button-glow: #c2ccff;
+  --color-accent-primary: #98c0ef;
+  --color-status-online: #4ade80;
+  --color-status-soon: #98c0ef;
+
+  /* Sombras Internas (Cool Upper Rim) */
+  --shadow-glass-inset:
+    rgba(216, 236, 248, 0.2) 0px 1px 1px 0px inset,
+    rgba(168, 216, 245, 0.06) 0px 24px 48px 0px inset;
+  --shadow-capsule-inset: rgba(186, 215, 247, 0.14) 0px 0px 0px 1px inset;
+  --spotlight-radial: radial-gradient(
+    ellipse 60% 35% at 50% 0%,
+    rgba(152, 192, 239, 0.14) 0%,
+    rgba(124, 145, 182, 0.05) 45%,
+    transparent 80%
+  );
+
+  /* Radios (DESIGN.md) */
+  --radius-capsule: 9999px;
+  --radius-tile: 16px;
+  --radius-browser: 12px;
+  --radius-conversion: 28px;
+
+  /* Espaciado y Transiciones */
+  --space-chapter: 6.5rem;
+  --transition-smooth: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-glass: 0.45s cubic-bezier(0.6, 0.6, 0, 1);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Fondos y Superficies (Tema Claro Técnico AA) */
+  --color-canvas: #f5f8fc;
+  --color-canvas-elevated: #ffffff;
+  --color-tile: rgba(255, 255, 255, 0.92);
+  --color-tile-hover: #ffffff;
+  --color-glass: rgba(255, 255, 255, 0.95);
+  --color-glass-hover: #ffffff;
+  --color-wash: rgba(15, 23, 42, 0.055);
+  --color-wash-hover: rgba(30, 58, 138, 0.1);
+  --color-nav-backdrop: rgba(245, 248, 252, 0.88);
+
+  /* Bordes y Líneas de Circuito */
+  --color-edge: rgba(15, 23, 42, 0.14);
+  --color-edge-subtle: rgba(15, 23, 42, 0.09);
+  --color-edge-bright: rgba(37, 99, 235, 0.32);
+  --color-circuit-line: rgba(15, 23, 42, 0.09);
+  --color-circuit-dot: rgba(37, 99, 235, 0.55);
+
+  /* Texto y Gradientes (Contraste AA > 7:1 sobre #f5f8fc / #ffffff) */
+  --color-heading-light: #090d16;
+  --color-heading-blue: #1e3a8a;
+  --color-heading-shadow: rgba(30, 58, 138, 0.08);
+  --color-action-ink: #0f172a;
+  --color-quote: #1e293b;
+  --color-body: #334155;
+  --color-muted: #475569;
+
+  /* Acentos e Indicadores */
+  --color-button-glow: #2563eb;
+  --color-accent-primary: #1d4ed8;
+  --color-status-online: #15803d;
+  --color-status-soon: #1d4ed8;
+
+  /* Sombras y Destellos */
+  --shadow-glass-inset:
+    rgba(255, 255, 255, 0.9) 0px 1px 1px 0px inset, rgba(15, 23, 42, 0.05) 0px 12px 32px -4px;
+  --shadow-capsule-inset: rgba(15, 23, 42, 0.15) 0px 0px 0px 1px inset;
+  --spotlight-radial: radial-gradient(
+    ellipse 60% 35% at 50% 0%,
+    rgba(37, 99, 235, 0.09) 0%,
+    rgba(59, 130, 246, 0.03) 45%,
+    transparent 80%
+  );
+}
