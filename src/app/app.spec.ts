@@ -14,10 +14,13 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render the student name and role', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, devPortfolio');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Sebastián Morales Flórez');
+    expect(compiled.querySelector('.shell__subtitle')?.textContent).toContain(
+      'Estudiante de Ingeniería de Sistemas (2023-actualidad)',
+    );
   });
 });
