@@ -1,48 +1,73 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { ProfileComponent } from '../../components/profile/profile.component';
 import { BentoHighlight, ProfileData } from '../../interface/profile.interface';
+import { State } from '../../interface/state.interface';
 import { PROFILE_DATA } from '../../mock/profile.data';
 import { PortfolioService } from '../../services/portfolio.service';
 
 /**
- * Sección de Perfil Profesional (Hero + Cuadrícula Bento).
- * Consume `PortfolioService` mediante Observables (RxJS) y presenta:
- * - Avatar con soporte para fotografía (`assets/images/profile.jpg`) y respaldo de iniciales (`SM`).
- * - Encabezado luminoso y resumen profesional.
- * - Cuadrícula Bento con los 4 pilares: Estudios, Distinción Andrés Bello, Semillero Goslint y Bienestar.
+ * Componente contenedor de la sección de Perfil Profesional (`pages/profile-section`).
+ *
+ * Se utiliza para gestionar la obtención de los datos del perfil y las tarjetas Bento
+ * mediante Observables y pasarlos por `@Input()` al componente presentacional `ProfileComponent`
+ * (`components/profile`).
+ *
+ * @remarks
+ * Sigue la arquitectura limpia de presentación vista en clase (Contenedor en `pages/` +
+ * Organismo presentacional en `components/`).
  */
 @Component({
   selector: 'app-profile-section',
-  imports: [RouterLink],
+  imports: [ProfileComponent],
   templateUrl: './profile-section.html',
   styleUrl: './profile-section.scss',
 })
 export class ProfileSectionComponent implements OnInit {
   private readonly portfolioService = inject(PortfolioService);
 
-  /** Estado reactivo del perfil cargado desde el Observable del servicio. */
-  protected readonly profile = signal<ProfileData>(PROFILE_DATA);
+  @ViewChild(ProfileComponent) private profileComponent?: ProfileComponent;
 
-  /** Tarjetas destacadas de la cuadrícula Bento cargadas por Observable. */
-  protected readonly bentoCards = signal<BentoHighlight[]>(PROFILE_DATA.bentoHighlights);
+  /**
+   * Datos del perfil profesional obtenidos desde el Observable del servicio.
+   * @type {ProfileData}
+   */
+  profile: ProfileData = PROFILE_DATA;
 
-  /** Controla si la imagen de perfil falló al cargar para mostrar el avatar con iniciales. */
-  protected readonly imageLoadFailed = signal<boolean>(false);
+  /**
+   * Listado de tarjetas Bento obtenidas desde el Observable del servicio.
+   * @type {BentoHighlight[]}
+   */
+  bentoCards: BentoHighlight[] = PROFILE_DATA.bentoHighlights;
+
+  /**
+   * Estado actual de carga del contenedor.
+   * @default 'init'
+   */
+  state: State = 'init';
 
   ngOnInit(): void {
-    this.portfolioService.getProfile().subscribe((profileData) => {
-      this.profile.set(profileData);
+    this.state = 'loading';
+    this.portfolioService.getProfile().subscribe({
+      next: (profileData) => {
+        this.profile = profileData;
+        this.state = 'success';
+      },
+      error: () => {
+        this.state = 'error';
+      },
     });
 
-    this.portfolioService.getBentoHighlights().subscribe((highlights) => {
-      this.bentoCards.set(highlights);
+    this.portfolioService.getBentoHighlights().subscribe({
+      next: (highlights) => {
+        this.bentoCards = highlights;
+      },
     });
   }
 
   /**
-   * Activa el avatar de respaldo con iniciales cuando el archivo de imagen aún no existe.
+   * Delega el manejo de error de carga de fotografía al componente presentacional `ProfileComponent`.
    */
   onAvatarError(): void {
-    this.imageLoadFailed.set(true);
+    this.profileComponent?.onAvatarError(false);
   }
 }

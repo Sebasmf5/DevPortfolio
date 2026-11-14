@@ -1,73 +1,8 @@
-<section id="habilidades" class="skills-chapter" aria-labelledby="skills-heading">
-  <div class="chapter-container">
-    <header class="skills-chapter__header">
-      <p class="ruled-eyebrow">Capacidades y fundamentos</p>
-      <h2 id="skills-heading" class="luminous-heading">
-        Conocimientos técnicos y habilidades blandas
-      </h2>
-      <p class="chapter-description">
-        Tecnologías organizadas por dominio de ingeniería y competencias humanas respaldadas por
-        evidencia real.
-      </p>
-    </header>
-
-    <!-- Bloques de Tecnologías por Categoría -->
-    <div class="skills-categories">
-      @for (group of groupedTechnicalSkills(); track group.categoria) {
-        <div class="skill-category-block">
-          <h3 class="skill-category-block__subtitle">{{ group.categoria }}</h3>
-
-          <ul class="tech-grid" [attr.aria-label]="'Tecnologías de ' + group.categoria">
-            @for (item of group.items; track item.nombre) {
-              <li class="feature-tile tech-card" tabindex="0">
-                <div class="tech-card__main">
-                  <span class="tech-card__icon-wrap" aria-hidden="true">
-                    @if (isDevicon(item.icono)) {
-                      <i [class]="item.icono + ' colored tech-card__devicon'"></i>
-                    } @else {
-                      <lucide-icon
-                        [name]="item.icono"
-                        [size]="18"
-                        class="tech-card__lucide"
-                      ></lucide-icon>
-                    }
-                  </span>
-                  <span class="tech-card__name">{{ item.nombre }}</span>
-                </div>
-
-                @if (item.estado === 'aprendiendo') {
-                  <span class="tech-card__learning-badge">Aprendiendo</span>
-                } @else {
-                  <span class="tech-card__node" aria-hidden="true"></span>
-                }
-              </li>
-            }
-          </ul>
-        </div>
-      }
-    </div>
-
-    <!-- Bloque de Habilidades Blandas con Evidencia -->
-    <div class="soft-skills-block">
-      <h3 class="skill-category-block__subtitle">Habilidades blandas</h3>
-
-      <ul class="soft-grid" aria-label="Habilidades blandas con evidencia">
-        @for (skill of visibleSoftSkills(); track skill.nombre) {
-          <li class="feature-tile soft-card" tabindex="0">
-            <div class="soft-card__header">
-              <span class="soft-card__icon-wrap" aria-hidden="true">
-                <lucide-icon
-                  [name]="skill.icono"
-                  [size]="18"
-                  class="soft-card__lucide"
-                ></lucide-icon>
-              </span>
-              <h4 class="soft-card__title">{{ skill.nombre }}</h4>
-            </div>
-            <p class="soft-card__evidence">{{ skill.evidencia }}</p>
-          </li>
-        }
-      </ul>
-    </div>
-  </div>
-</section>
+@switch (state) {
+  @case ('error') {
+    <p role="alert">Error al cargar las habilidades.</p>
+  }
+  @default {
+    <app-skills [technicalSkills]="technicalSkills" [softSkills]="softSkills"></app-skills>
+  }
+}

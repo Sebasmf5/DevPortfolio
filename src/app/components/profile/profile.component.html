@@ -1,0 +1,174 @@
+<section id="perfil" class="profile-chapter" aria-labelledby="profile-heading">
+  <div class="chapter-container">
+    <!-- Escenario Hero en 2 columnas: Contenido editorial a la izquierda + Retrato enmarcado a la derecha -->
+    <div class="hero-stage">
+      <div class="hero-stage__lattice" aria-hidden="true">
+        <span class="hero-stage__dot hero-stage__dot--tl"></span>
+        <span class="hero-stage__dot hero-stage__dot--tr"></span>
+        <span class="hero-stage__dot hero-stage__dot--bl"></span>
+        <span class="hero-stage__dot hero-stage__dot--br"></span>
+      </div>
+
+      <div class="hero-stage__grid">
+        <!-- Columna Izquierda: Identidad profesional, resumen, chips académicos y CTAs -->
+        <div class="hero-stage__content">
+          <div class="hero-stage__eyebrow-row">
+            <span class="hero-stage__status-pill">
+              <span class="hero-stage__status-dot" aria-hidden="true"></span>
+              <span>Ingeniería de Sistemas · {{ profile.periodoEstudios }}</span>
+            </span>
+            <p class="ruled-eyebrow hero-stage__institution">{{ profile.institucion }}</p>
+          </div>
+
+          <h1 id="profile-heading" class="luminous-heading hero-stage__title">
+            {{ profile.nombre }}
+          </h1>
+
+          <p class="hero-stage__promise">{{ profile.rol }}</p>
+          <p class="chapter-description hero-stage__summary">{{ profile.resumen }}</p>
+
+          <!-- Insignias rápidas de contexto académico y ubicación -->
+          <ul class="hero-stage__highlights" aria-label="Datos rápidos del perfil">
+            <li class="hero-stage__highlight-chip">
+              <lucide-icon
+                [img]="icons.award"
+                [size]="14"
+                [strokeWidth]="1.75"
+                aria-hidden="true"
+              ></lucide-icon>
+              <span>Distinción Andrés Bello (4.º ICFES)</span>
+            </li>
+            <li class="hero-stage__highlight-chip">
+              <lucide-icon
+                [img]="icons.code"
+                [size]="14"
+                [strokeWidth]="1.75"
+                aria-hidden="true"
+              ></lucide-icon>
+              <span>Semillero Goslint (ICPC)</span>
+            </li>
+            <li class="hero-stage__highlight-chip">
+              <lucide-icon
+                [img]="icons.mapPin"
+                [size]="14"
+                [strokeWidth]="1.75"
+                aria-hidden="true"
+              ></lucide-icon>
+              <span>Tuluá, Valle del Cauca</span>
+            </li>
+          </ul>
+
+          <!-- Acciones principales en cápsula -->
+          <div class="hero-stage__actions">
+            <a routerLink="/proyectos" class="glowing-capsule hero-stage__cta-primary">
+              <span>Explorar catálogo de proyectos</span>
+              <svg
+                viewBox="0 0 24 24"
+                width="15"
+                height="15"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <a
+              [href]="profile.contacto.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="glowing-capsule"
+            >
+              <span>GitHub · &#64;{{ profile.contacto.githubUsername }}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Retrato grande enmarcado tipo tarjeta glass con circuito -->
+        <aside class="hero-portrait" aria-label="Retrato profesional de {{ profile.nombre }}">
+          <div class="hero-portrait__card">
+            <div class="hero-portrait__top-bar" aria-hidden="true">
+              <span class="hero-portrait__code-tag">PORTFOLIO // ID-01</span>
+              <span class="hero-portrait__online-indicator" title="Perfil activo"></span>
+            </div>
+
+            <div class="hero-avatar__frame hero-portrait__frame">
+              @if (resolvedAvatarUrl() && !imageLoadFailed()) {
+                <img
+                  [src]="resolvedAvatarUrl()"
+                  [alt]="'Fotografía de perfil de ' + profile.nombre"
+                  class="hero-avatar__img hero-portrait__img"
+                  width="260"
+                  height="310"
+                  (error)="onAvatarError(true)"
+                />
+              } @else {
+                <div class="hero-portrait__fallback">
+                  <span
+                    class="hero-avatar__initials hero-portrait__initials"
+                    aria-label="Iniciales de Sebastián Morales Flórez"
+                  >
+                    {{ profile.iniciales }}
+                  </span>
+                  <span class="hero-portrait__fallback-caption">Sebastián Morales Flórez</span>
+                </div>
+              }
+            </div>
+
+            <div class="hero-portrait__caption">
+              <div class="hero-portrait__caption-text">
+                <span class="hero-portrait__handle">
+                  &#64;{{ profile.contacto.githubUsername }}
+                </span>
+                <span class="hero-portrait__sub">Arquitectura de Software · UCEVA</span>
+              </div>
+              <span
+                class="hero-avatar__status hero-portrait__status-badge"
+                title="Disponible para proyectos académicos y desarrollo"
+              >
+                Activo
+              </span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Cuadrícula Bento: Estudios, Distinción Andrés Bello, Semillero Goslint, Bienestar -->
+    <div class="bento-grid" role="list" aria-label="Pilares académicos y logros destacados">
+      @for (card of bentoCards; track card.id; let idx = $index) {
+        <article
+          class="feature-tile bento-card"
+          [class.bento-card--wide]="idx === 0 || idx === 3"
+          role="listitem"
+        >
+          <div class="bento-card__instrument" aria-hidden="true">
+            <svg class="bento-card__circuit" viewBox="0 0 240 48" fill="none">
+              <path
+                d="M8 24H76L92 10H156L172 24H232"
+                stroke="currentColor"
+                stroke-opacity="0.22"
+                stroke-width="1"
+              />
+              <circle cx="8" cy="24" r="2.5" fill="currentColor" fill-opacity="0.55" />
+              <circle cx="124" cy="10" r="3" fill="currentColor" fill-opacity="0.75" />
+              <circle cx="232" cy="24" r="2.5" fill="currentColor" fill-opacity="0.55" />
+            </svg>
+            <span class="bento-card__badge">{{ card.badge }}</span>
+          </div>
+
+          <div class="bento-card__body">
+            <p class="bento-card__eyebrow">{{ card.eyebrow }}</p>
+            <h2 class="bento-card__title">{{ card.title }}</h2>
+            <p class="bento-card__description">{{ card.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

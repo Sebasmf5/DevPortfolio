@@ -1,0 +1,135 @@
+<section id="proyectos" class="projects-chapter" aria-labelledby="projects-heading">
+  <div class="portfolio-container">
+    <header class="projects-chapter__header">
+      <p class="section-eyebrow">
+        Catálogo de ingeniería ({{ publishedCount }}/{{ projects.length }} activos)
+      </p>
+      <h2 id="projects-heading" class="section-title text-luminous">Proyectos desplegados</h2>
+      <p class="section-subtitle">
+        Cinco espacios de ingeniería con repositorios independientes en GitHub y despliegue
+        automatizado mediante GitHub Actions y GitHub Pages.
+      </p>
+    </header>
+
+    <div class="projects-grid" role="list">
+      @for (project of projects; track project.id) {
+        <article
+          class="project-card glass-tile"
+          [class.project-card--featured]="project.id === 1"
+          [class.project-card--upcoming]="!isPublished(project)"
+          role="listitem"
+          tabindex="0"
+        >
+          <div class="project-card__meta">
+            <span class="project-card__index" aria-hidden="true">
+              <lucide-icon [img]="icons.folderGit" [size]="15" [strokeWidth]="1.75"></lucide-icon>
+              <span>PROYECTO {{ formatProjectIndex(project.id) }}</span>
+            </span>
+
+            @if (isPublished(project)) {
+              <span class="project-card__status project-card__status--published">
+                <span class="project-card__status-dot" aria-hidden="true"></span>
+                <span>Publicado</span>
+              </span>
+            } @else {
+              <span class="project-card__status project-card__status--upcoming">
+                <lucide-icon
+                  [img]="icons.clock"
+                  [size]="12"
+                  [strokeWidth]="1.75"
+                  aria-hidden="true"
+                ></lucide-icon>
+                <span>Próximamente</span>
+              </span>
+            }
+          </div>
+
+          <div class="project-card__body">
+            <h3 class="project-card__title">{{ project.nombre }}</h3>
+            <p class="project-card__description">{{ project.descripcion }}</p>
+
+            <div class="project-card__section">
+              <h4 class="project-card__label">Principales características</h4>
+              <ul
+                class="project-card__features"
+                aria-label="Características de {{ project.nombre }}"
+              >
+                @for (feature of project.caracteristicas; track feature) {
+                  <li class="project-card__feature-item">
+                    <lucide-icon
+                      class="project-card__feature-icon"
+                      [img]="icons.check"
+                      [size]="15"
+                      [strokeWidth]="1.75"
+                      aria-hidden="true"
+                    ></lucide-icon>
+                    <span>{{ feature }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <div class="project-card__section">
+              <h4 class="project-card__label">Tecnologías y herramientas</h4>
+              <ul class="project-card__tech-list" aria-label="Tecnologías de {{ project.nombre }}">
+                @for (tech of project.tecnologias; track tech) {
+                  <li class="project-card__tech-chip">{{ tech }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <footer class="project-card__actions">
+            @if (isPublished(project)) {
+              <a
+                class="capsule-btn capsule-btn--primary project-card__link"
+                [href]="project.demoUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="'Abrir aplicación desplegada de ' + project.nombre"
+              >
+                <span>Aplicación en vivo</span>
+                <lucide-icon
+                  [img]="icons.externalLink"
+                  [size]="14"
+                  [strokeWidth]="1.75"
+                  aria-hidden="true"
+                ></lucide-icon>
+              </a>
+
+              <a
+                class="capsule-btn project-card__link"
+                [href]="project.repoUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="'Ver repositorio en GitHub de ' + project.nombre"
+              >
+                <lucide-icon
+                  [img]="icons.code"
+                  [size]="14"
+                  [strokeWidth]="1.75"
+                  aria-hidden="true"
+                ></lucide-icon>
+                <span>Repositorio GitHub</span>
+              </a>
+            } @else {
+              <span
+                class="capsule-btn project-card__link project-card__link--disabled"
+                aria-disabled="true"
+              >
+                <span>Despliegue pendiente</span>
+              </span>
+
+              <span
+                class="capsule-btn project-card__link project-card__link--disabled"
+                aria-disabled="true"
+              >
+                <span>Repositorio pendiente</span>
+              </span>
+            }
+          </footer>
+        </article>
+      }
+    </div>
+  </div>
+</section>
