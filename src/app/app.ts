@@ -5,16 +5,17 @@ import { FooterComponent } from './components/footer/footer';
 import { NavbarComponent } from './components/navbar/navbar';
 import { ProfileData } from './interface/profile.interface';
 import { PROFILE_DATA } from './mock/profile.data';
+import { ProfileSectionComponent } from './pages/profile-section/profile-section';
 import { PortfolioService } from './services/portfolio.service';
 
 /**
  * Componente raíz de la aplicación.
- * Integra el layout principal (`app-navbar`, contenedor de capítulos y `app-footer`),
+ * Integra el layout principal (`app-navbar`, secciones modulares y `app-footer`),
  * consume el perfil mediante Observables (`PortfolioService`) y sincroniza las rutas limpias.
  */
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, FooterComponent],
+  imports: [NavbarComponent, ProfileSectionComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
