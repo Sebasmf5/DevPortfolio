@@ -75,10 +75,10 @@ devPortfolio/
 | # | Proyecto | Estado | Dominio / URL de Despliegue | Repositorio |
 | :-: | :--- | :---: | :--- | :--- |
 | **01** | **Dev Portfolio — Catálogo Digital de Ingeniería** | `Publicado` | [https://sebasmf.dev](https://sebasmf.dev) | [Sebasmf5/DevPortfolio](https://github.com/Sebasmf5/DevPortfolio) |
-| **02** | **TAP — Gestión de Asistencia, Certificados y Préstamos** *(Despliegue con GitHub Actions en la rama `develop`)* | `Publicado` | [https://tap.sebasmf.dev/login](https://tap.sebasmf.dev/login) | [Sebasmf5/TAP (rama `develop`)](https://github.com/Sebasmf5/TAP/tree/develop) |
+| **02** | **TAP — Gestión de Asistencia, Certificados y Préstamos** *(Despliegue con GitHub Actions en la rama `develop`)* | `Publicado` | [https://tap.sebasmf.dev/](https://tap.sebasmf.dev/) | [Sebasmf5/TAP (rama `develop`)](https://github.com/Sebasmf5/TAP/tree/develop) |
 | **03** | **Uceva Astro SSG & Angular SPA — Catálogo Tecnológico** *(Astro en raíz y Angular en `/angular/`)* | `Publicado` | [https://sebasmf5.github.io/Uceva-Astro-Angular-SSG-SPA/](https://sebasmf5.github.io/Uceva-Astro-Angular-SSG-SPA/) | [Sebasmf5/Uceva-Astro-Angular-SSG-SPA](https://github.com/Sebasmf5/Uceva-Astro-Angular-SSG-SPA) |
-| **04** | **Proyecto 4** *(GitHub Pages)* | `Próximamente` | `https://sebasmf5.github.io/<repo-4>/` | Independiente |
-| **05** | **Proyecto 5** *(GitHub Pages)* | `Próximamente` | `https://sebasmf5.github.io/<repo-5>/` | Independiente |
+| **04** | **Angular Modules Template — Introducción a Angular** *(rama `develop`)* | `Publicado` | [https://sebasmf5.github.io/Uceva-Angular-Parcial-Practico-I/](https://sebasmf5.github.io/Uceva-Angular-Parcial-Practico-I/) | [Sebasmf5/Uceva-Angular-Parcial-Practico-I (rama `develop`)](https://github.com/Sebasmf5/Uceva-Angular-Parcial-Practico-I/tree/develop) |
+| **05** | **UCEVA Storage Manager** *(librería open-source para Angular 20)* | `Publicado` | [https://sebasmf5.github.io/uceva-storage-manager/](https://sebasmf5.github.io/uceva-storage-manager/) | [Sebasmf5/uceva-storage-manager](https://github.com/Sebasmf5/uceva-storage-manager) |
 
 ### ¿Cómo activar o agregar un proyecto en 1 paso?
 
