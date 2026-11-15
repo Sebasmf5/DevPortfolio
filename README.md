@@ -75,8 +75,8 @@ devPortfolio/
 | # | Proyecto | Estado | Dominio / URL de Despliegue | Repositorio |
 | :-: | :--- | :---: | :--- | :--- |
 | **01** | **Dev Portfolio — Catálogo Digital de Ingeniería** | `Publicado` | [https://sebasmf.dev](https://sebasmf.dev) | [Sebasmf5/DevPortfolio](https://github.com/Sebasmf5/DevPortfolio) |
-| **02** | **Proyecto 2** *(Subdominio propio)* | `Próximamente` | `https://<subdominio>.sebasmf.dev` | Independiente |
-| **03** | **Proyecto 3** *(GitHub Pages)* | `Próximamente` | `https://sebasmf5.github.io/<repo-3>/` | Independiente |
+| **02** | **TAP — Gestión de Asistencia, Certificados y Préstamos** *(Despliegue con GitHub Actions en la rama `develop`)* | `Publicado` | [https://tap.sebasmf.dev/login](https://tap.sebasmf.dev/login) | [Sebasmf5/TAP (rama `develop`)](https://github.com/Sebasmf5/TAP/tree/develop) |
+| **03** | **Uceva Astro SSG & Angular SPA — Catálogo Tecnológico** *(Astro en raíz y Angular en `/angular/`)* | `Publicado` | [https://sebasmf5.github.io/Uceva-Astro-Angular-SSG-SPA/](https://sebasmf5.github.io/Uceva-Astro-Angular-SSG-SPA/) | [Sebasmf5/Uceva-Astro-Angular-SSG-SPA](https://github.com/Sebasmf5/Uceva-Astro-Angular-SSG-SPA) |
 | **04** | **Proyecto 4** *(GitHub Pages)* | `Próximamente` | `https://sebasmf5.github.io/<repo-4>/` | Independiente |
 | **05** | **Proyecto 5** *(GitHub Pages)* | `Próximamente` | `https://sebasmf5.github.io/<repo-5>/` | Independiente |
 

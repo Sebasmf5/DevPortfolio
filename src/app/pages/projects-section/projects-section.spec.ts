@@ -36,13 +36,18 @@ describe('ProjectsSectionComponent', () => {
 
   it('should render "Próximamente" badge and disabled actions for upcoming projects', () => {
     const element = fixture.nativeElement as HTMLElement;
+    const expectedUpcomingCount = component.projects.filter(
+      (project) => project.estado === 'proximamente',
+    ).length;
     const upcomingCards = element.querySelectorAll('.project-card--upcoming');
-    expect(upcomingCards.length).toBe(4);
+    expect(upcomingCards.length).toBe(expectedUpcomingCount);
 
-    const firstUpcoming = upcomingCards[0] as HTMLElement;
-    expect(firstUpcoming.textContent).toContain('Próximamente');
+    if (expectedUpcomingCount > 0) {
+      const firstUpcoming = upcomingCards[0] as HTMLElement;
+      expect(firstUpcoming.textContent).toContain('Próximamente');
 
-    const disabledActions = firstUpcoming.querySelectorAll('[aria-disabled="true"]');
-    expect(disabledActions.length).toBe(2);
+      const disabledActions = firstUpcoming.querySelectorAll('[aria-disabled="true"]');
+      expect(disabledActions.length).toBe(2);
+    }
   });
 });
