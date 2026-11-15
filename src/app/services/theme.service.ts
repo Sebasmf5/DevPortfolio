@@ -17,7 +17,10 @@ export const THEME_STORAGE_KEY = 'sebasmf-portfolio-theme';
   providedIn: 'root',
 })
 export class ThemeService {
+  /** Referencia al documento DOM inyectado por Angular para manipular `data-theme`. */
   private readonly document = inject(DOCUMENT);
+
+  /** Sujeto reactivo interno que almacena y emite el modo de tema actual. */
   private readonly themeSubject = new BehaviorSubject<ThemeMode>(this.resolveInitialTheme());
 
   /** Flujo reactivo RxJS con el modo de tema activo ('dark' | 'light'). */
@@ -29,6 +32,9 @@ export class ThemeService {
   /** Signal computado que indica si el tema oscuro está activo. */
   readonly isDark = computed(() => this.theme() === 'dark');
 
+  /**
+   * Inicializa el tema en el DOM y registra un efecto reactivo para sincronizar cambios posteriores.
+   */
   constructor() {
     this.applyThemeToDom(this.theme());
 

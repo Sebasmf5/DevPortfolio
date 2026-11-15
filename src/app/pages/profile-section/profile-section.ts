@@ -23,8 +23,10 @@ import { PortfolioService } from '../../services/portfolio.service';
   styleUrl: './profile-section.scss',
 })
 export class ProfileSectionComponent implements OnInit {
+  /** Servicio reactivo del portafolio utilizado para consultar el perfil y los pilares Bento. */
   private readonly portfolioService = inject(PortfolioService);
 
+  /** Referencia al organismo presentacional `ProfileComponent` para delegar eventos de respaldo de avatar. */
   @ViewChild(ProfileComponent) private profileComponent?: ProfileComponent;
 
   /**
@@ -45,6 +47,9 @@ export class ProfileSectionComponent implements OnInit {
    */
   state: State = 'init';
 
+  /**
+   * Inicializa el contenedor cargando el perfil profesional y las tarjetas Bento mediante Observables.
+   */
   ngOnInit(): void {
     this.state = 'loading';
     this.portfolioService.getProfile().subscribe({

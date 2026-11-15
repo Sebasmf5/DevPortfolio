@@ -89,7 +89,9 @@ const SKILL_LUCIDE_ICONS = {
 
 /** Grupo de tecnologías por categoría para renderizado con subtítulo propio. */
 export interface SkillCategoryGroup {
+  /** Nombre de la categoría técnica agrupada. */
   categoria: SkillCategory;
+  /** Lista de tecnologías pertenecientes a la categoría. */
   items: TechnicalSkillItem[];
 }
 

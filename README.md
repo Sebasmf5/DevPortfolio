@@ -135,6 +135,8 @@ npm start
 | `npm run lint` | Verifica tipos con el compilador de Angular (`ngc --noEmit`) y estilo con Prettier. |
 | `npm test` | Ejecuta las **27 pruebas unitarias** (11 archivos `.spec.ts`) en modo headless con Vitest. |
 | `npm run build` | Genera el empaquetado optimizado de producción en `dist/devPortfolio/browser`. |
+| `npm run compodoc` | Genera y sirve localmente la documentación técnica interactiva con Compodoc. |
+| `npm run compodoc:build` | Compila la documentación estática de Compodoc en la carpeta `documentation/`. |
 
 ---
 
