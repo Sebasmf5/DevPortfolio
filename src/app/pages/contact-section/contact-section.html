@@ -1,0 +1,8 @@
+@switch (state) {
+  @case ('error') {
+    <p role="alert">Error al cargar la información de contacto.</p>
+  }
+  @default {
+    <app-contact [profile]="profile"></app-contact>
+  }
+}

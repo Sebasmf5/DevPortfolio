@@ -1,0 +1,8 @@
+@switch (state) {
+  @case ('error') {
+    <p role="alert">Error al cargar la experiencia.</p>
+  }
+  @default {
+    <app-experience [experienceItems]="experienceItems"></app-experience>
+  }
+}

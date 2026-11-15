@@ -1,0 +1,8 @@
+@switch (state) {
+  @case ('error') {
+    <p role="alert">Error al cargar la información del perfil.</p>
+  }
+  @default {
+    <app-profile [profile]="profile" [bentoCards]="bentoCards"></app-profile>
+  }
+}
