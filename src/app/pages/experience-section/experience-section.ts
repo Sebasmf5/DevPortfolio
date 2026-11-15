@@ -23,6 +23,7 @@ import { PortfolioService } from '../../services/portfolio.service';
   styleUrl: './experience-section.scss',
 })
 export class ExperienceSectionComponent implements OnInit {
+  /** Servicio reactivo del portafolio utilizado para consultar el historial de experiencia. */
   private readonly portfolioService = inject(PortfolioService);
 
   /**
@@ -37,6 +38,9 @@ export class ExperienceSectionComponent implements OnInit {
    */
   state: State = 'init';
 
+  /**
+   * Inicializa el contenedor cargando la experiencia institucional y logros mediante Observables.
+   */
   ngOnInit(): void {
     this.state = 'loading';
     this.portfolioService.getExperience().subscribe({

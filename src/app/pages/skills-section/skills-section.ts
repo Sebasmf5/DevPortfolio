@@ -22,6 +22,7 @@ import { PortfolioService } from '../../services/portfolio.service';
   styleUrl: './skills-section.scss',
 })
 export class SkillsSectionComponent implements OnInit {
+  /** Servicio reactivo del portafolio utilizado para consultar habilidades técnicas y blandas. */
   private readonly portfolioService = inject(PortfolioService);
 
   /**
@@ -42,6 +43,9 @@ export class SkillsSectionComponent implements OnInit {
    */
   state: State = 'init';
 
+  /**
+   * Inicializa el contenedor cargando habilidades técnicas y blandas mediante Observables.
+   */
   ngOnInit(): void {
     this.state = 'loading';
     this.portfolioService.getTechnicalSkills().subscribe({

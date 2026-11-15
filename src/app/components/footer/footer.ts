@@ -15,11 +15,18 @@ import { PortfolioService } from '../../services/portfolio.service';
   styleUrl: './footer.scss',
 })
 export class FooterComponent implements OnInit {
+  /** Servicio reactivo del portafolio utilizado para obtener los datos del estudiante. */
   private readonly portfolioService = inject(PortfolioService);
 
+  /** Señal reactiva con la información del perfil mostrada en el pie de página. */
   protected readonly profile = signal<ProfileData>(PROFILE_DATA);
+
+  /** Año calendario actual mostrado junto a la información institucional. */
   protected readonly currentYear = signal(new Date().getFullYear());
 
+  /**
+   * Carga los datos del perfil desde `PortfolioService` al inicializar el componente.
+   */
   ngOnInit(): void {
     this.portfolioService.getProfile().subscribe((data) => {
       this.profile.set(data);

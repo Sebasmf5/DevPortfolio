@@ -19,10 +19,16 @@ import { ThemeService } from '../../services/theme.service';
   styleUrl: './navbar.scss',
 })
 export class NavbarComponent implements OnInit {
+  /** Servicio reactivo encargado de gestionar el tema claro y oscuro de la aplicación. */
   protected readonly themeService = inject(ThemeService);
+
+  /** Servicio reactivo utilizado para consultar los datos del perfil del estudiante. */
   private readonly portfolioService = inject(PortfolioService);
 
+  /** Señal reactiva con la información del perfil mostrada en la barra superior. */
   protected readonly profile = signal<ProfileData>(PROFILE_DATA);
+
+  /** Controla el estado abierto o cerrado del menú desplegable en dispositivos móviles. */
   protected readonly mobileMenuOpen = signal(false);
 
   /** Secciones claras del portafolio con rutas HTML5 sin Hash (#). */
@@ -34,6 +40,9 @@ export class NavbarComponent implements OnInit {
     { id: 'contacto', label: 'Contacto', route: '/contacto' },
   ]);
 
+  /**
+   * Inicializa la barra de navegación suscribiéndose al Observable del perfil profesional.
+   */
   ngOnInit(): void {
     this.portfolioService.getProfile().subscribe((data) => {
       this.profile.set(data);

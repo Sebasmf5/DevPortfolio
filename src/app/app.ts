@@ -32,11 +32,18 @@ import { PortfolioService } from './services/portfolio.service';
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
+  /** Enrutador de Angular utilizado para sincronizar la navegación con el desplazamiento entre secciones. */
   private readonly router = inject(Router);
+
+  /** Servicio reactivo del portafolio que expone los datos mediante Observables. */
   private readonly portfolioService = inject(PortfolioService);
 
+  /** Señal reactiva con los datos generales del perfil del estudiante. */
   protected readonly profile = signal<ProfileData>(PROFILE_DATA);
 
+  /**
+   * Suscribe el desplazamiento suave de pantalla a los eventos de navegación de rutas limpias.
+   */
   constructor() {
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
@@ -51,6 +58,9 @@ export class App implements OnInit {
       });
   }
 
+  /**
+   * Inicializa el componente raíz suscribiéndose al Observable del perfil profesional.
+   */
   ngOnInit(): void {
     this.portfolioService.getProfile().subscribe((data) => {
       this.profile.set(data);

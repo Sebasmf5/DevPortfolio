@@ -23,6 +23,7 @@ import { PortfolioService } from '../../services/portfolio.service';
   styleUrl: './contact-section.scss',
 })
 export class ContactSectionComponent implements OnInit {
+  /** Servicio reactivo del portafolio utilizado para consultar los enlaces y datos de contacto. */
   private readonly portfolioService = inject(PortfolioService);
 
   /**
@@ -37,6 +38,9 @@ export class ContactSectionComponent implements OnInit {
    */
   state: State = 'init';
 
+  /**
+   * Inicializa el contenedor cargando la información de contacto mediante Observables.
+   */
   ngOnInit(): void {
     this.state = 'loading';
     this.portfolioService.getProfile().subscribe({

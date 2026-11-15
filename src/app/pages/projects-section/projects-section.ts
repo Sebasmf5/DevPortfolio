@@ -23,6 +23,7 @@ import { PortfolioService } from '../../services/portfolio.service';
   styleUrl: './projects-section.scss',
 })
 export class ProjectsSectionComponent implements OnInit {
+  /** Servicio reactivo del portafolio utilizado para consultar el catálogo de 5 proyectos. */
   private readonly portfolioService = inject(PortfolioService);
 
   /**
@@ -37,6 +38,9 @@ export class ProjectsSectionComponent implements OnInit {
    */
   state: State = 'init';
 
+  /**
+   * Inicializa el contenedor cargando el catálogo de proyectos mediante Observables.
+   */
   ngOnInit(): void {
     this.state = 'loading';
     this.portfolioService.getProjects().subscribe({
