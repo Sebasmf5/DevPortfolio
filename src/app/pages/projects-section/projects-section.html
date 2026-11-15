@@ -1,0 +1,8 @@
+@switch (state) {
+  @case ('error') {
+    <p role="alert">Error al cargar el catálogo de proyectos.</p>
+  }
+  @default {
+    <app-projects [projects]="projects"></app-projects>
+  }
+}

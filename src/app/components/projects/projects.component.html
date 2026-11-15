@@ -1,0 +1,704 @@
+<section id="proyectos" class="projects-chapter" aria-labelledby="projects-heading">
+  <div class="portfolio-container">
+    <header class="projects-chapter__header">
+      <p class="section-eyebrow">
+        Catálogo de ingeniería ({{ publishedCount }}/{{ projects.length }} activos)
+      </p>
+      <h2 id="projects-heading" class="section-title text-luminous">Proyectos desplegados</h2>
+      <p class="section-subtitle">
+        Cinco espacios de ingeniería con repositorios independientes en GitHub y despliegue
+        automatizado mediante GitHub Actions y GitHub Pages.
+      </p>
+    </header>
+
+    <div class="projects-grid" role="list">
+      @for (project of projects; track project.id; let idx = $index) {
+        <article
+          class="project-card glass-tile"
+          [class.project-card--featured]="project.id === 1"
+          [class.project-card--upcoming]="!isPublished(project)"
+          [style.--card-delay]="idx * 70 + 'ms'"
+          role="listitem"
+          tabindex="0"
+        >
+          <!-- Figura / Ilustración técnica animada por proyecto -->
+          <div class="project-card__visual" aria-hidden="true">
+            <div class="project-card__visual-grid"></div>
+
+            @switch (project.id) {
+              @case (1) {
+                <!-- Figura 01: Ventana de arquitectura CI/CD y doble tema -->
+                <svg
+                  class="project-card__svg project-card__svg--featured"
+                  viewBox="0 0 360 200"
+                  fill="none"
+                >
+                  <rect
+                    x="14"
+                    y="14"
+                    width="332"
+                    height="172"
+                    rx="14"
+                    stroke="currentColor"
+                    stroke-opacity="0.22"
+                    fill="currentColor"
+                    fill-opacity="0.03"
+                  />
+                  <line
+                    x1="14"
+                    y1="44"
+                    x2="346"
+                    y2="44"
+                    stroke="currentColor"
+                    stroke-opacity="0.16"
+                  />
+                  <circle cx="34" cy="29" r="4" fill="currentColor" fill-opacity="0.45" />
+                  <circle cx="48" cy="29" r="4" fill="currentColor" fill-opacity="0.3" />
+                  <circle cx="62" cy="29" r="4" fill="currentColor" fill-opacity="0.2" />
+                  <rect
+                    x="252"
+                    y="22"
+                    width="76"
+                    height="14"
+                    rx="7"
+                    fill="currentColor"
+                    fill-opacity="0.1"
+                    stroke="currentColor"
+                    stroke-opacity="0.25"
+                  />
+                  <!-- Nodos de pipeline CI/CD -->
+                  <path
+                    class="svg-circuit-flow"
+                    d="M52 104 H140 L166 78 H238 L264 104 H308"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-opacity="0.65"
+                  />
+                  <path
+                    class="svg-circuit-flow svg-circuit-flow--reverse"
+                    d="M52 134 H126 L154 156 H244 L274 134 H308"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-opacity="0.38"
+                  />
+                  <rect
+                    x="36"
+                    y="90"
+                    width="52"
+                    height="28"
+                    rx="8"
+                    fill="var(--color-canvas)"
+                    stroke="currentColor"
+                    stroke-opacity="0.45"
+                  />
+                  <rect
+                    x="154"
+                    y="64"
+                    width="64"
+                    height="28"
+                    rx="8"
+                    fill="var(--color-canvas)"
+                    stroke="currentColor"
+                    stroke-opacity="0.55"
+                  />
+                  <rect
+                    x="272"
+                    y="90"
+                    width="52"
+                    height="28"
+                    rx="8"
+                    fill="var(--color-canvas)"
+                    stroke="currentColor"
+                    stroke-opacity="0.45"
+                  />
+                  <circle class="svg-pulse-node" cx="62" cy="104" r="4.5" fill="currentColor" />
+                  <circle class="svg-pulse-node" cx="186" cy="78" r="5" fill="#34d399" />
+                  <circle class="svg-pulse-node" cx="298" cy="104" r="4.5" fill="currentColor" />
+                </svg>
+              }
+              @case (2) {
+                <!-- Figura 02: Matriz QR con escáner animado + insignia de certificado -->
+                <svg class="project-card__svg" viewBox="0 0 320 130" fill="none">
+                  <!-- Marco QR -->
+                  <rect
+                    x="26"
+                    y="18"
+                    width="94"
+                    height="94"
+                    rx="12"
+                    stroke="currentColor"
+                    stroke-opacity="0.28"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <rect
+                    x="38"
+                    y="30"
+                    width="22"
+                    height="22"
+                    rx="4"
+                    stroke="currentColor"
+                    stroke-opacity="0.7"
+                    stroke-width="2"
+                  />
+                  <rect x="45" y="37" width="8" height="8" rx="1.5" fill="currentColor" />
+                  <rect
+                    x="86"
+                    y="30"
+                    width="22"
+                    height="22"
+                    rx="4"
+                    stroke="currentColor"
+                    stroke-opacity="0.7"
+                    stroke-width="2"
+                  />
+                  <rect x="93" y="37" width="8" height="8" rx="1.5" fill="currentColor" />
+                  <rect
+                    x="38"
+                    y="78"
+                    width="22"
+                    height="22"
+                    rx="4"
+                    stroke="currentColor"
+                    stroke-opacity="0.7"
+                    stroke-width="2"
+                  />
+                  <rect x="45" y="85" width="8" height="8" rx="1.5" fill="currentColor" />
+                  <rect
+                    x="70"
+                    y="62"
+                    width="10"
+                    height="10"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.55"
+                  />
+                  <rect
+                    x="86"
+                    y="62"
+                    width="18"
+                    height="10"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.35"
+                  />
+                  <rect
+                    x="70"
+                    y="80"
+                    width="16"
+                    height="18"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.45"
+                  />
+                  <rect
+                    x="92"
+                    y="80"
+                    width="12"
+                    height="18"
+                    rx="2"
+                    fill="currentColor"
+                    fill-opacity="0.65"
+                  />
+                  <!-- Línea láser de escaneo -->
+                  <line
+                    class="svg-scanline"
+                    x1="32"
+                    y1="26"
+                    x2="114"
+                    y2="26"
+                    stroke="#34d399"
+                    stroke-width="2"
+                  />
+                  <!-- Flujo hacia certificado e inventario -->
+                  <path
+                    class="svg-circuit-flow"
+                    d="M120 65 H176"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-opacity="0.6"
+                  />
+                  <rect
+                    x="176"
+                    y="24"
+                    width="118"
+                    height="82"
+                    rx="12"
+                    stroke="currentColor"
+                    stroke-opacity="0.25"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <circle cx="200" cy="48" r="10" fill="#34d399" fill-opacity="0.2" />
+                  <path
+                    d="M195 48 L199 52 L206 44"
+                    stroke="#34d399"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <rect
+                    x="220"
+                    y="42"
+                    width="58"
+                    height="7"
+                    rx="3.5"
+                    fill="currentColor"
+                    fill-opacity="0.45"
+                  />
+                  <rect
+                    x="190"
+                    y="70"
+                    width="88"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.22"
+                  />
+                  <rect
+                    x="190"
+                    y="84"
+                    width="64"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.16"
+                  />
+                </svg>
+              }
+              @case (3) {
+                <!-- Figura 03: Arquitectura dual Astro SSG <-> Angular SPA -->
+                <svg class="project-card__svg" viewBox="0 0 320 130" fill="none">
+                  <!-- Bloque Astro SSG -->
+                  <rect
+                    x="22"
+                    y="24"
+                    width="104"
+                    height="82"
+                    rx="12"
+                    stroke="currentColor"
+                    stroke-opacity="0.3"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <polygon
+                    points="74,40 88,72 74,64 60,72"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    fill="currentColor"
+                    fill-opacity="0.18"
+                  />
+                  <rect
+                    x="44"
+                    y="84"
+                    width="60"
+                    height="7"
+                    rx="3.5"
+                    fill="currentColor"
+                    fill-opacity="0.45"
+                  />
+                  <!-- Conector central animado -->
+                  <path
+                    class="svg-circuit-flow"
+                    d="M126 55 H194"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-opacity="0.7"
+                  />
+                  <path
+                    class="svg-circuit-flow svg-circuit-flow--reverse"
+                    d="M126 75 H194"
+                    stroke="#34d399"
+                    stroke-width="1.4"
+                    stroke-opacity="0.55"
+                  />
+                  <circle
+                    class="svg-pulse-node"
+                    cx="160"
+                    cy="65"
+                    r="7"
+                    fill="currentColor"
+                    fill-opacity="0.2"
+                  />
+                  <circle class="svg-pulse-node" cx="160" cy="65" r="3" fill="currentColor" />
+                  <!-- Bloque Angular SPA -->
+                  <rect
+                    x="194"
+                    y="24"
+                    width="104"
+                    height="82"
+                    rx="12"
+                    stroke="currentColor"
+                    stroke-opacity="0.3"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <polygon
+                    points="246,38 264,46 260,68 246,76 232,68 228,46"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    fill="currentColor"
+                    fill-opacity="0.16"
+                  />
+                  <rect
+                    x="216"
+                    y="84"
+                    width="60"
+                    height="7"
+                    rx="3.5"
+                    fill="currentColor"
+                    fill-opacity="0.45"
+                  />
+                </svg>
+              }
+              @case (4) {
+                <!-- Figura 04: Arquitectura modular en Angular (Módulo raíz -> Componentes) -->
+                <svg class="project-card__svg" viewBox="0 0 320 130" fill="none">
+                  <rect
+                    x="112"
+                    y="16"
+                    width="96"
+                    height="32"
+                    rx="8"
+                    stroke="currentColor"
+                    stroke-opacity="0.45"
+                    fill="currentColor"
+                    fill-opacity="0.08"
+                  />
+                  <circle class="svg-pulse-node" cx="128" cy="32" r="4" fill="#34d399" />
+                  <rect
+                    x="140"
+                    y="29"
+                    width="52"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.55"
+                  />
+                  <path
+                    class="svg-circuit-flow"
+                    d="M160 48 V66 H66 V82 M160 48 V82 M160 48 V66 H254 V82"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-opacity="0.6"
+                  />
+                  <rect
+                    x="30"
+                    y="82"
+                    width="72"
+                    height="32"
+                    rx="8"
+                    stroke="currentColor"
+                    stroke-opacity="0.3"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <rect
+                    x="124"
+                    y="82"
+                    width="72"
+                    height="32"
+                    rx="8"
+                    stroke="currentColor"
+                    stroke-opacity="0.3"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <rect
+                    x="218"
+                    y="82"
+                    width="72"
+                    height="32"
+                    rx="8"
+                    stroke="currentColor"
+                    stroke-opacity="0.3"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <rect
+                    x="44"
+                    y="95"
+                    width="44"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.4"
+                  />
+                  <rect
+                    x="138"
+                    y="95"
+                    width="44"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.4"
+                  />
+                  <rect
+                    x="232"
+                    y="95"
+                    width="44"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.4"
+                  />
+                </svg>
+              }
+              @case (5) {
+                <!-- Figura 05: Storage Manager (API Tipada -> LocalStorage & Cache Storage) -->
+                <svg class="project-card__svg" viewBox="0 0 320 130" fill="none">
+                  <rect
+                    x="34"
+                    y="22"
+                    width="90"
+                    height="86"
+                    rx="12"
+                    stroke="currentColor"
+                    stroke-opacity="0.35"
+                    fill="currentColor"
+                    fill-opacity="0.06"
+                  />
+                  <rect
+                    x="50"
+                    y="40"
+                    width="58"
+                    height="8"
+                    rx="4"
+                    fill="currentColor"
+                    fill-opacity="0.55"
+                  />
+                  <rect
+                    x="50"
+                    y="58"
+                    width="44"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.3"
+                  />
+                  <rect
+                    x="50"
+                    y="72"
+                    width="50"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.3"
+                  />
+                  <path
+                    class="svg-circuit-flow"
+                    d="M124 46 H186"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-opacity="0.7"
+                  />
+                  <path
+                    class="svg-circuit-flow svg-circuit-flow--reverse"
+                    d="M124 84 H186"
+                    stroke="#34d399"
+                    stroke-width="1.5"
+                    stroke-opacity="0.65"
+                  />
+                  <rect
+                    x="186"
+                    y="24"
+                    width="100"
+                    height="36"
+                    rx="10"
+                    stroke="currentColor"
+                    stroke-opacity="0.35"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <circle class="svg-pulse-node" cx="204" cy="42" r="4" fill="currentColor" />
+                  <rect
+                    x="216"
+                    y="39"
+                    width="54"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.45"
+                  />
+                  <rect
+                    x="186"
+                    y="70"
+                    width="100"
+                    height="36"
+                    rx="10"
+                    stroke="currentColor"
+                    stroke-opacity="0.35"
+                    fill="currentColor"
+                    fill-opacity="0.04"
+                  />
+                  <circle class="svg-pulse-node" cx="204" cy="88" r="4" fill="#34d399" />
+                  <rect
+                    x="216"
+                    y="85"
+                    width="54"
+                    height="6"
+                    rx="3"
+                    fill="currentColor"
+                    fill-opacity="0.45"
+                  />
+                </svg>
+              }
+              @default {
+                <!-- Figura 04 / 05: Blueprint orbital en preparación -->
+                <svg
+                  class="project-card__svg project-card__svg--upcoming"
+                  viewBox="0 0 320 130"
+                  fill="none"
+                >
+                  <circle
+                    class="svg-orbit-ring"
+                    cx="160"
+                    cy="65"
+                    r="44"
+                    stroke="currentColor"
+                    stroke-opacity="0.2"
+                    stroke-dasharray="5 5"
+                  />
+                  <circle
+                    cx="160"
+                    cy="65"
+                    r="26"
+                    stroke="currentColor"
+                    stroke-opacity="0.3"
+                    stroke-width="1.25"
+                  />
+                  <line
+                    x1="54"
+                    y1="65"
+                    x2="266"
+                    y2="65"
+                    stroke="currentColor"
+                    stroke-opacity="0.16"
+                    stroke-dasharray="4 4"
+                  />
+                  <circle cx="160" cy="65" r="5" fill="currentColor" fill-opacity="0.55" />
+                  <circle cx="116" cy="65" r="3" fill="currentColor" fill-opacity="0.45" />
+                  <circle cx="204" cy="65" r="3" fill="currentColor" fill-opacity="0.45" />
+                </svg>
+              }
+            }
+          </div>
+
+          <div class="project-card__content">
+            <div class="project-card__meta">
+              <span class="project-card__index" aria-hidden="true">
+                <lucide-icon [img]="icons.folderGit" [size]="15" [strokeWidth]="1.75"></lucide-icon>
+                <span>PROYECTO {{ formatProjectIndex(project.id) }}</span>
+              </span>
+
+              @if (isPublished(project)) {
+                <span class="project-card__status project-card__status--published">
+                  <span class="project-card__status-dot" aria-hidden="true"></span>
+                  <span>Publicado</span>
+                </span>
+              } @else {
+                <span class="project-card__status project-card__status--upcoming">
+                  <lucide-icon
+                    [img]="icons.clock"
+                    [size]="12"
+                    [strokeWidth]="1.75"
+                    aria-hidden="true"
+                  ></lucide-icon>
+                  <span>Próximamente</span>
+                </span>
+              }
+            </div>
+
+            <div class="project-card__body">
+              <h3 class="project-card__title">{{ project.nombre }}</h3>
+              <p class="project-card__description">{{ project.descripcion }}</p>
+
+              <div class="project-card__section">
+                <h4 class="project-card__label">Principales características</h4>
+                <ul
+                  class="project-card__features"
+                  aria-label="Características de {{ project.nombre }}"
+                >
+                  @for (feature of project.caracteristicas; track feature) {
+                    <li class="project-card__feature-item">
+                      <lucide-icon
+                        class="project-card__feature-icon"
+                        [img]="icons.check"
+                        [size]="15"
+                        [strokeWidth]="1.75"
+                        aria-hidden="true"
+                      ></lucide-icon>
+                      <span>{{ feature }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+
+              <div class="project-card__section">
+                <h4 class="project-card__label">Tecnologías y herramientas</h4>
+                <ul
+                  class="project-card__tech-list"
+                  aria-label="Tecnologías de {{ project.nombre }}"
+                >
+                  @for (tech of project.tecnologias; track tech) {
+                    <li class="project-card__tech-chip">{{ tech }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+
+            <footer class="project-card__actions">
+              @if (isPublished(project)) {
+                <a
+                  class="capsule-btn capsule-btn--primary project-card__link"
+                  [href]="project.demoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="'Abrir aplicación desplegada de ' + project.nombre"
+                >
+                  <span>Aplicación en vivo</span>
+                  <lucide-icon
+                    [img]="icons.externalLink"
+                    [size]="14"
+                    [strokeWidth]="1.75"
+                    aria-hidden="true"
+                  ></lucide-icon>
+                </a>
+
+                <a
+                  class="capsule-btn project-card__link"
+                  [href]="project.repoUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.aria-label]="'Ver repositorio en GitHub de ' + project.nombre"
+                >
+                  <lucide-icon
+                    [img]="icons.code"
+                    [size]="14"
+                    [strokeWidth]="1.75"
+                    aria-hidden="true"
+                  ></lucide-icon>
+                  <span>Repositorio GitHub</span>
+                </a>
+              } @else {
+                <span
+                  class="capsule-btn project-card__link project-card__link--disabled"
+                  aria-disabled="true"
+                >
+                  <span>Despliegue pendiente</span>
+                </span>
+
+                <span
+                  class="capsule-btn project-card__link project-card__link--disabled"
+                  aria-disabled="true"
+                >
+                  <span>Repositorio pendiente</span>
+                </span>
+              }
+            </footer>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

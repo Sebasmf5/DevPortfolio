@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "lint": "ngc -p tsconfig.app.json --noEmit && prettier --check \"src/**/*.{ts,html,scss}\"",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
+    "test": "ng test --watch=false",
+    "test:watch": "ng test"
   },
   "private": true,
   "packageManager": "npm@10.8.2",
@@ -17,6 +20,8 @@
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "devicon": "^2.18.0",
+    "lucide-angular": "^1.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

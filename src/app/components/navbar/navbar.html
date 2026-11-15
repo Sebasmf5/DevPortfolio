@@ -1,0 +1,134 @@
+<header class="navbar">
+  <div class="chapter-container navbar__inner">
+    <!-- Marca izquierda: Iniciales + Nombre -->
+    <a
+      routerLink="/perfil"
+      class="navbar__brand"
+      (click)="onNavigateSection('perfil')"
+      aria-label="Ir al inicio del portafolio de Sebastián Morales Flórez"
+    >
+      <span class="navbar__monogram" aria-hidden="true">{{ profile().iniciales }}</span>
+      <span class="navbar__brand-text">
+        <span class="navbar__brand-name">{{ profile().nombre }}</span>
+        <span class="navbar__brand-tag">Ingeniería de Sistemas · UCEVA</span>
+      </span>
+    </a>
+
+    <!-- Navegación central clara entre secciones (sin Hash #) -->
+    <nav
+      class="navbar__nav"
+      [class.navbar__nav--open]="mobileMenuOpen()"
+      aria-label="Secciones del portafolio"
+    >
+      @for (item of navItems(); track item.id) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="navbar__link--active"
+          class="navbar__link"
+          (click)="onNavigateSection(item.id)"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <!-- Acciones derechas: GitHub + Botón cápsula de tema + Menú móvil -->
+    <div class="navbar__actions">
+      <a
+        [href]="profile().contacto.githubUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="glowing-capsule navbar__github"
+        aria-label="Visitar perfil de GitHub Sebasmf5"
+      >
+        <svg
+          class="navbar__icon"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+          width="15"
+          height="15"
+        >
+          <path
+            d="M12 0.5C5.37 0.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.295 24 17.795 24 12.5 24 5.87 18.63 0.5 12 0.5z"
+          />
+        </svg>
+        <span>{{ profile().contacto.githubUsername }}</span>
+      </a>
+
+      <button
+        type="button"
+        class="glowing-capsule navbar__theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="themeService.isDark() ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
+      >
+        @if (themeService.isDark()) {
+          <svg
+            class="navbar__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            width="15"
+            height="15"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span class="navbar__theme-label">Claro</span>
+        } @else {
+          <svg
+            class="navbar__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            width="15"
+            height="15"
+          >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+          <span class="navbar__theme-label">Oscuro</span>
+        }
+      </button>
+
+      <button
+        type="button"
+        class="glowing-capsule navbar__menu-btn"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Alternar menú de secciones"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          @if (mobileMenuOpen()) {
+            <path d="M18 6 6 18M6 6l12 12" />
+          } @else {
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          }
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
